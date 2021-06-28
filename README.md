@@ -1,1 +1,1 @@
-# LTTS
+# This is a repo for LTTS mini project!
