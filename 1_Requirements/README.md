@@ -14,7 +14,7 @@ This project is being implemented using C Programming Language.
 * Finally, the entire database can be viewed by the user and would be extremely user friendly as opposed to a tedious manual list of compositions which would be hard to organise and keep track of. 
 
 ## SWOT ANALYSIS
-The brief analysis of the strengths, weaknesses, opportunities and threats associated with this project can be accessed [here](https://github.com/amulyasingaraju/LTTS/tree/main/1_Requirements).
+The brief analysis of the strengths, weaknesses, opportunities and threats associated with this project can be accessed [here](https://github.com/amulyasingaraju/LTTS/blob/main/1_Requirements/SWOT%20Analysis.PNG).
 
 ## FUNCTIONAL REQUIREMENTS
 
