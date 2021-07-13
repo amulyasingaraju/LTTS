@@ -25,3 +25,15 @@ Code Grade | Code Quality Score|CPP-Check Static Code Quality|GitInspector|Codac
 | SF ID  | Name        | 
 |---     |---        |
 | `298062`| Singaraju Amulya  |
+
+| Feature Id | Feature |
+| -----------|---------|
+|F_01| Option to load previously saved data |
+|F_02| Data is saved if any new data is added |
+|F_03| Songs can be deleted if not needed |
+|F_04| Date is validated |
+|F_05| Data can be searched |
+|F_06| Before program gets shut down, memory is freed and cleaned|
+|F_07| Used Text File System for access to files |
+|F_08| Previously saved data can be viewed |
+|F_09| Username & Password credentials can be updated |
