@@ -4,6 +4,7 @@ This is a simple application to address an issue that most musicians face while 
 
 Code Grade | Code Quality Score|CPP-Check Static Code Quality|GitInspector|
  |-----------|-----------|-----------|-----------|
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3a068794a59b478e83c7ffcc33596a6c)](https://app.codacy.com/gh/amulyasingaraju/LTTS?utm_source=github.com&utm_medium=referral&utm_content=amulyasingaraju/LTTS&utm_campaign=Badge_Grade_Settings)
  |[![Code Grade](https://www.code-inspector.com/project/25120/status/svg)](https://frontend.code-inspector.com/public/project/25120/LTTS/dashb)|[![Code Quality Score](https://www.code-inspector.com/project/25120/score/svg)](https://frontend.code-inspector.com/public/project/25120/LTTS/dashb)|[![Code Quality - Static Code - Cppcheck](https://github.com/amulyasingaraju/LTTS/actions/workflows/cppcheck.yml/badge.svg)](https://github.com/amulyasingaraju/LTTS/actions/workflows/cppcheck.yml)|[![Contribution Check - Git Inspector](https://github.com/amulyasingaraju/LTTS/actions/workflows/gitinspector.yml/badge.svg)](https://github.com/amulyasingaraju/LTTS/actions/workflows/gitinspector.yml)|
  
 ## Folder Structure
