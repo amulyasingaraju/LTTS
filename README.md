@@ -4,7 +4,7 @@ This is a simple application to address an issue that most musicians face while 
 
 Code Grade | Code Quality Score|
  |-----------|-----------|
- |[![Code Grade](https://www.code-inspector.com/project/25120/status/svg)](https://frontend.code-inspector.com/public/project/25120/LTTS/dashb)| [![Code Quality Score](https://www.code-inspector.com/project/25120/score/svg](https://frontend.code-inspector.com/public/project/25120/LTTS/dashb)|
+ |[![Code Grade](https://www.code-inspector.com/project/25120/status/svg)](https://frontend.code-inspector.com/public/project/25120/LTTS/dashb)|[![Code Quality Score](https://www.code-inspector.com/project/25120/score/svg)](https://frontend.code-inspector.com/public/project/25120/LTTS/dashb)|
  
 ## Folder Structure
 
