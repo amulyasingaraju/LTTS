@@ -1,4 +1,4 @@
-ame: Cppcheck-Static Code Quality Analysis
+name: Cppcheck-Static Code Quality Analysis
 
 on:
   push:
