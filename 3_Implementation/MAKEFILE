@@ -4,18 +4,17 @@ TEST_PROJ_NAME = Test_$(PROJ_NAME)
 BUILD_DIR = BUILD
 
 SRC = src/addSong.c\
-src/addDate.c\
 src/deleteSong.c\
 src/initialised.c\
-src/isfileExist.c\
-src/isnamevalid.c\
+src/isFileExist.c\
+src/isNameValid.c\
 src/isValidDate.c\
-src/leap_year.c\
+src/leapYear.c\
 src/login.c\
 src/menu.c\
-src/searchSong.c\
+src/searchSongs.c\
 src/updateCredential.c\
-src/viewSong.c\
+src/viewSongs.c\
 src/welcomeMessage.c
 
 TEST_SRC = test/test_library.c\
