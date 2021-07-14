@@ -1,88 +1,76 @@
-# OS detection
+PROJ_NAME = Songbook_Management_System
+TEST_PROJ_NAME = Test_$(PROJ_NAME)
 
-ifeq ($(OS), Windows_NT)
-	EXECUTABLE=code.exe
+BUILD_DIR = BUILD
+
+SRC = src/addSong.c\
+src/deleteSong.c\
+src/initialised.c\
+src/isFileExist.c\
+src/isNameValid.c\
+src/isValidDate.c\
+src/leapYear.c\
+src/login.c\
+src/menu.c\
+src/searchSongs.c\
+src/updateCredential.c\
+src/viewSongs.c\
+src/welcomeMessage.c
+
+TEST_SRC = test/test_library.c\
+unity/unity.c
+
+INC = -Iinc\
+-Iunity
+
+#To check if the OS is Windows or Linux and set the executable file extension and delete command accordingly
+ifdef OS
+   RM = del /q
+   FixPath = $(subst /,\,$1)
+   EXEC = exe
 else
-	EXECUTABLE=code.out
+   ifeq ($(shell uname), Linux)
+      RM = rm -rf
+      FixPath = $1
+	  EXEC = out
+   endif
 endif
 
+# Makefile will not run target command if the name with file already exists. To override, use .PHONY
+.PHONY : all test coverage run clean 
 
+all:$(BUILD_DIR)
+	gcc main.c $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
-# Name of the project
-PROJECT_NAME = songbook
+run: all
+	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
-# Output directory
-BUILD = build
+test: $(SRC) $(TEST_SRC)
+	gcc $^ $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) < test/test_input.txt
 
-# All source code files
-SRC = main.c\
-src/operations.c
+coverage:${PROJECT_NAME}
+	gcc -fprofile-arcs -ftest-coverage $(SRC) $(TEST_SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC))
+	$(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) < test/test_input.txt
+	gcov -a $(SRC)
+	$(RM) *.gcda 
+	$(RM) *.gcno
 
-# All test source files
-TEST_SRC = src/operations.c\
-test/test.c\
-unity/unity.c\
-
-TEST_OUTPUT = $(BUILD)/Test_$(PROJECT_NAME).out
-
-# All include folders with header files
-INC	= -Iinc\
--Iunity\
-
-#Library Inlcudes
-#INCLUDE_LIBS = 
-INCLUDE_LIBS = -lcunit
-
-# Project Output name
-PROJECT_OUTPUT = $(BUILD)/$(EXECUTABLE)
-
-# Document files
-DOCUMENTATION_OUTPUT = documentation/html
-
-# Default target built
-$(PROJECT_NAME):all
-
-# Run the target even if the matching name exists
-.PHONY: run clean test doc all
-
-all: $(SRC) $(BUILD)
-	gcc $(SRC) $(INC) -o $(PROJECT_OUTPUT)
-
-# Call `make run` to run the application
-run:$(PROJECT_NAME)
-	./$(PROJECT_OUTPUT)
-
-# Document the code using Doxygen
-doc:
-	make -C ./documentation
-
-# Build and run the unit tests
-# $(INCLUDE_LIBS) 
-test:$(BUILD)
-	gcc $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) 
-	./$(TEST_OUTPUT)
-
-analyze: test memcheck staticcheck coverage sanitize_check
-
-staticcheck:
-	cppcheck --enable=all -iunity .
+staticcheck::$(SRC)
+	cppcheck --enable=all main.c $(SRC)
 
 memcheck:
-	valgrind ./$(TEST_OUTPUT)
+	valgrind $(call FixPath,$(BUILD_DIR)/$(TEST_PROJ_NAME).$(EXEC)) < test/test_input.txt
 
-sanitize_check:
-	gcc -fsanitize=address -fno-omit-frame-pointer $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
-	./$(TEST_OUTPUT)
+doc:
+	make -C doc
+$(BUILD_DIR):
+	mkdir $(BUILD_DIR)
 
-coverage:$(TEST_SRC)
-	gcc -fprofile-arcs -ftest-coverage $(TEST_SRC) $(INC) -o $(TEST_OUTPUT) $(INCLUDE_LIBS)
-	./$(TEST_OUTPUT)
-	gcov -a calculator_operations.c
-
-# Remove all the built files, invoke by `make clean`
 clean:
-	rm -rf $(BUILD) $(DOCUMENTATION_OUTPUT) *.gcda *.gcno *.gcov
+	$(RM) $(call FixPath,$(BUILD_DIR)/*)
+	$(RM) *.gcda 
+	$(RM) *.gcno
 
-# Create new build folder if not present
-$(BUILD):
-	mkdir build
+# make clean -C doc
+# rmdir $(BUILD_DIR) doc/html

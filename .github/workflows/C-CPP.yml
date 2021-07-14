@@ -1,31 +1,17 @@
-<<<<<<< HEAD:.github/workflows/c-cpp.yml
-name: Cppcheck-Static Code Quality Analysis
-=======
 name: C/C++ CI - Build Status
->>>>>>> b2b93601ca5c2fa61e066a0eecebbdd343eff828:.github/workflows/C-CPP.yml
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
-  cppcheck:
-    runs-on: ubuntu-latest
+  build:
+
+    runs-on: windows-latest
 
     steps:
-<<<<<<< HEAD:.github/workflows/c-cpp.yml
-      - uses: actions/checkout@v2
-      - name: Install cppcheck
-        run: sudo apt -y install cppcheck
-      - name: make
-        run: make -C 3_Implementation/ all
-      - name: Run cppcheck
-        run: cppcheck 3_Implementation
-   
-=======
     - uses: actions/checkout@v2
     - name: make
       run: make -C 3_Implementation/ all
->>>>>>> b2b93601ca5c2fa61e066a0eecebbdd343eff828:.github/workflows/C-CPP.yml

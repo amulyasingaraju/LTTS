@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Code Quality Dynamic Analysis
+name: Build-Linux
 
 # Controls when the action will run. 
 on:
@@ -15,17 +15,11 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test:
+  compilation:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: apt install dependency
-      run: |
-        sudo apt-get -y install valgrind
-        sudo apt-get -y install libcunit1 libcunit1-doc libcunit1-dev 
-    - name: make test
-      run: make -C 3_Implementation/ test
-    - name: Valgrid
-      run: make -C 3_Implementation/ memcheck
+    - name: compiled
+      run: make -C 3_Implementation/ all
